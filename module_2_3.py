@@ -7,5 +7,4 @@ while s < len(my_list):
         continue
     elif num < 0:
         break
-    else:
-        print(num)
+    print(num)
