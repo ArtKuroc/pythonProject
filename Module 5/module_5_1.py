@@ -12,14 +12,23 @@ class House:
         return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
 
     def __len__(self):
-        return self.number_of_floors
+        if isinstance(self.number_of_floors, int):
+            return self.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __eq__(self, other):
-        return self.number_of_floors == other
+        if isinstance(self.number_of_floors, int) and isinstance(other, object):
+            return self.number_of_floors == other
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __add__(self, value):
-        self.number_of_floors += value
-        return self.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(value, int):
+            self.number_of_floors += value
+            return self.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __iadd__(self, value):
         return self.__add__(value)
@@ -28,19 +37,35 @@ class House:
         return self.__add__(value)
 
     def __gt__(self, other):
-        return self.number_of_floors > other.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(other.number_of_floors, int):
+            return self.number_of_floors > other.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __ge__(self, other):
-        return self.number_of_floors >= other.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(other.number_of_floors, int):
+            return self.number_of_floors >= other.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __lt__(self, other):
-        return self.number_of_floors < other.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(other.number_of_floors, int):
+            return self.number_of_floors < other.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __le__(self, other):
-        return self.number_of_floors <= other.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(other.number_of_floors, int):
+            return self.number_of_floors <= other.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
 
     def __ne__(self, other):
-        return self.number_of_floors != other.number_of_floors
+        if isinstance(self.number_of_floors, int) and isinstance(other.number_of_floors, int):
+            return self.number_of_floors != other.number_of_floors
+        else:
+            raise TypeError('Этаж должен быть целым числом')
+
 h1 = House('ЖК Горский', 18)
 h2 = House('Домик в деревне', 2)
 h1.go_to(5)
